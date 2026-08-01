@@ -1,0 +1,49 @@
+# Python and test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+
+# Environments and local configuration
+.env
+.venv/
+venv/
+env/
+*.local.yml
+*.local.yaml
+
+# Raw datasets, generated outputs, and caches
+data/
+datasets/
+outputs/
+PreprocessedData/
+OurDataset_RhythmFormer*/
+subject[0-9]*/
+*.avi
+*.mp4
+*.MP4
+*.npy
+*.npz
+*.bin
+*.bin_align.csv
+session_mapping*.csv
+quality_report*.csv
+
+# Models and runtime artifacts
+ckpts/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.log
+*.pid
+*.exit
+*.tmp.*
+visual_review*/
+smoke_results*/
+
+# OS/editor metadata
+.DS_Store
+._*
+.Spotlight-V100/
+.Trashes/

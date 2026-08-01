@@ -1,0 +1,23 @@
+name: facexformer-preprocess
+variables:
+  PYTHONNOUSERSITE: "1"
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pytorch=2.2.2
+  - torchvision=0.17.2
+  - pytorch-cuda=12.1
+  - numpy=1.26
+  - pillow=10.2
+  - opencv
+  - scipy
+  - pandas
+  - fsspec
+  - tqdm
+  - pip
+  - pip:
+      - facenet-pytorch==2.6.0
+      - huggingface-hub

@@ -1,0 +1,104 @@
+BASE: ['']
+TOOLBOX_MODE: "train_and_test"
+TRAIN:
+  BATCH_SIZE: 4
+  EPOCHS: 30
+  LR: 9e-3
+  MODEL_FILE_NAME: OurDataset_FaceX128_RhythmFormer
+  AUG: 1
+  DATA:
+    FS: 50
+    DATASET: OurDataset
+    DO_PREPROCESS: True
+    DATA_FORMAT: NDCHW
+    DATA_PATH: "/home/nordlinglab/Louis/facex_preprocess/data/OurDataset_RhythmFormer_FaceX_128/"
+    CACHED_PATH: "/home/nordlinglab/Louis/facex_preprocess/PreprocessedData/OurDataset_FaceX128/"
+    EXP_DATA_NAME: ""
+    BEGIN: 0.0
+    END: 0.85
+    PREPROCESS:
+      DATA_TYPE: ['Standardized']
+      LABEL_TYPE: Standardized
+      DO_CHUNK: True
+      CHUNK_LENGTH: 160
+      CROP_FACE:
+        DO_CROP_FACE: False
+        USE_LARGE_FACE_BOX: False
+        LARGE_BOX_COEF: 1.0
+        DETECTION:
+          DO_DYNAMIC_DETECTION: False
+          DYNAMIC_DETECTION_FREQUENCY: 50
+          USE_MEDIAN_FACE_BOX: False
+      RESIZE:
+        H: 128
+        W: 128
+VALID:
+  DATA:
+    FS: 50
+    DATASET: OurDataset
+    DO_PREPROCESS: True
+    DATA_FORMAT: NDCHW
+    DATA_PATH: "/home/nordlinglab/Louis/facex_preprocess/data/OurDataset_RhythmFormer_FaceX_128/"
+    CACHED_PATH: "/home/nordlinglab/Louis/facex_preprocess/PreprocessedData/OurDataset_FaceX128/"
+    EXP_DATA_NAME: ""
+    BEGIN: 0.0
+    END: 0.85
+    PREPROCESS:
+      DATA_TYPE: ['Standardized']
+      LABEL_TYPE: Standardized
+      DO_CHUNK: True
+      CHUNK_LENGTH: 160
+      CROP_FACE:
+        DO_CROP_FACE: False
+        USE_LARGE_FACE_BOX: False
+        LARGE_BOX_COEF: 1.0
+        DETECTION:
+          DO_DYNAMIC_DETECTION: False
+          DYNAMIC_DETECTION_FREQUENCY: 50
+          USE_MEDIAN_FACE_BOX: False
+      RESIZE:
+        H: 128
+        W: 128
+TEST:
+  METRICS: ['MAE', 'RMSE', 'MAPE', 'Pearson', 'SNR']
+  USE_LAST_EPOCH: True
+  DATA:
+    FS: 50
+    DATASET: OurDataset
+    DO_PREPROCESS: True
+    DATA_FORMAT: NDCHW
+    DATA_PATH: "/home/nordlinglab/Louis/facex_preprocess/data/OurDataset_RhythmFormer_FaceX_128/"
+    CACHED_PATH: "/home/nordlinglab/Louis/facex_preprocess/PreprocessedData/OurDataset_FaceX128/"
+    EXP_DATA_NAME: ""
+    BEGIN: 0.85
+    END: 1.0
+    PREPROCESS:
+      DATA_TYPE: ['Standardized']
+      LABEL_TYPE: Standardized
+      DO_CHUNK: True
+      CHUNK_LENGTH: 160
+      CROP_FACE:
+        DO_CROP_FACE: False
+        USE_LARGE_FACE_BOX: False
+        LARGE_BOX_COEF: 1.0
+        DETECTION:
+          DO_DYNAMIC_DETECTION: False
+          DYNAMIC_DETECTION_FREQUENCY: 50
+          USE_MEDIAN_FACE_BOX: False
+      RESIZE:
+        H: 128
+        W: 128
+DEVICE: cuda:0
+NUM_OF_GPU_TRAIN: 4
+LOG:
+  PATH: runs/exp
+MODEL:
+  DROP_RATE: 0.2
+  NAME: RhythmFormer
+INFERENCE:
+  BATCH_SIZE: 2
+  EVALUATION_METHOD: "FFT"
+  EVALUATION_WINDOW:
+    USE_SMALLER_WINDOW: False
+    WINDOW_SIZE: 10
+  MODEL_PATH: ""
